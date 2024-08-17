@@ -13,7 +13,7 @@ const poppins = Poppins({
 const miss = localFont({
   src: [
     {
-      path: "../assets/fonts/MissKatherine/Miss_Katherine_symbols-Regular.woff2",
+      path: "../assets/fonts/MissKatherine/Miss_Katherine-Script.woff2",
       weight: "400",
       style: "normal",
     },
@@ -58,7 +58,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body
-        className={`${poppins.variable} ${miss.variable} ${roca.variable} relative font-sans`}
+        className={`${poppins.variable} ${miss.variable} ${roca.variable} relative flex w-full flex-col items-center justify-start font-sans`}
       >
         <Header />
         {children}
