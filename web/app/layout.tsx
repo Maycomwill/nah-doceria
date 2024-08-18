@@ -58,7 +58,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body
-        className={`${poppins.variable} ${miss.variable} ${roca.variable} relative flex w-full flex-col items-center justify-start font-sans`}
+        className={`${poppins.variable} ${miss.variable} ${roca.variable} relative flex w-full flex-col items-center justify-start bg-cover font-sans`}
       >
         <Header />
         {children}

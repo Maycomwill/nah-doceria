@@ -15,7 +15,7 @@ function Header() {
           <Link href="#menu">Cardápio</Link>
         </li>
         <li className="pt-14">
-          <Link href="#">
+          <Link href="#" className="shadow-2xl">
             <Image src={Logo} height={120} width={120} alt="Logo image" />
           </Link>
         </li>
