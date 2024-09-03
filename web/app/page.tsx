@@ -33,7 +33,7 @@ function Home() {
           <h2 className="font-title text-4xl font-bold uppercase tracking-wider">
             Doces
           </h2>
-          <div className="grid w-full grid-cols-4 place-items-center items-center">
+          <div className="grid w-full grid-cols-2 place-content-start place-items-center items-baseline gap-4 md:grid-cols-3 md:gap-0 lg:grid-cols-4">
             {data.doces.map((item) => {
               return <MenuItem data={item} key={item.name} />;
             })}
@@ -43,7 +43,7 @@ function Home() {
           <h2 className="font-title text-4xl font-bold uppercase tracking-wider">
             Trufas
           </h2>
-          <div className="grid w-full grid-cols-4 place-items-center items-center">
+          <div className="grid w-full grid-cols-2 place-content-start place-items-center items-baseline gap-4 md:grid-cols-3 md:gap-0 lg:grid-cols-4">
             {data.trufas.map((item) => {
               return <MenuItem data={item} key={item.name} />;
             })}
@@ -53,7 +53,7 @@ function Home() {
           <h2 className="font-title text-4xl font-bold uppercase tracking-wider">
             Brownies
           </h2>
-          <div className="grid w-full grid-cols-4 place-items-center items-center">
+          <div className="grid w-full grid-cols-2 place-content-start place-items-center items-baseline gap-4 md:grid-cols-3 md:gap-0 lg:grid-cols-4">
             {data.brownies.map((item) => {
               return <MenuItem data={item} key={item.name} />;
             })}
