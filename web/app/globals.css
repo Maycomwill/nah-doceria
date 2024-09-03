@@ -7,15 +7,21 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 250, 233, 240;
   --background-end-rgb: 255, 255, 255;
+
 }
 
-@media (prefers-color-scheme: dark) {
+::selection {
+  background-color: #f2afc6;
+
+}
+
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 248, 250, 252;
     --background-start-rgb: 2, 6, 23;
     --background-end-rgb: 0, 0, 0;
   }
-}
+} */
 
 body {
   min-height: 100vh;

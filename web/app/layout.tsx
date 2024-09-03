@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/header";
+import AppProvider from "@/hooks";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -57,12 +58,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body
-        className={`${poppins.variable} ${miss.variable} ${roca.variable} relative flex w-full flex-col items-center justify-start bg-cover font-sans`}
-      >
-        <Header />
-        {children}
-      </body>
+      <AppProvider>
+        <body
+          className={`${poppins.variable} ${miss.variable} ${roca.variable} relative flex w-full flex-col items-center justify-start bg-cover font-sans`}
+        >
+          <Header />
+          {children}
+        </body>
+      </AppProvider>
     </html>
   );
 }

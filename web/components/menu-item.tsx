@@ -1,5 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 import React from "react";
+import BuyDialog from "./diologs/BuyDialog";
 
 interface MenuItemProps extends React.HTMLAttributes<HTMLDivElement> {
   data: {
@@ -8,11 +9,12 @@ interface MenuItemProps extends React.HTMLAttributes<HTMLDivElement> {
     description?: string;
     price: number;
     discount?: number;
+    available: boolean;
   };
 }
 
 function MenuItem({ data, ...props }: MenuItemProps) {
-  const { name, description, picture, price, discount } = data;
+  const { name, description, picture, price, discount, available } = data;
   return (
     <div
       {...props}
@@ -33,11 +35,13 @@ function MenuItem({ data, ...props }: MenuItemProps) {
         )}
       </div>
       <div className="flex flex-col items-center justify-between space-y-1">
-        <span className="text-center text-lg capitalize">{name}</span>
+        <span className="text-center text-lg font-medium capitalize">
+          {name}
+        </span>
         {description && (
           <span className="text-center text-sm">{description}</span>
         )}
-        <span>
+        <span className="font-medium">
           {discount
             ? (price - price * discount).toLocaleString("pt-br", {
                 style: "currency",
@@ -48,6 +52,9 @@ function MenuItem({ data, ...props }: MenuItemProps) {
                 currency: "BRL",
               })}
         </span>
+      </div>
+      <div>
+        <BuyDialog data={data} />
       </div>
     </div>
   );
