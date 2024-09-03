@@ -29,6 +29,9 @@ function BuyDialog({ data, ...props }: BuyDialogProps) {
       ...data,
       quantity,
       filling: filling ? filling : undefined,
+      value:
+        (data.discount ? data.price - data.price * data.discount : data.price) *
+        quantity,
     });
 
     setFilling("");

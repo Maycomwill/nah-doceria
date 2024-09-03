@@ -22,4 +22,5 @@ export interface CartItemProps {
   filling?: string;
   description?: string;
   discount?: number;
+  value: number;
 }

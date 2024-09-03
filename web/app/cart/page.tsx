@@ -1,5 +1,6 @@
 "use client";
 import CartList from "@/components/cart/cart-list";
+import FinishCart from "@/components/diologs/finish-cart";
 import Loading from "@/components/loading";
 import { Button } from "@/components/ui/button";
 import useCart from "@/hooks/useCart";
@@ -43,16 +44,7 @@ function Cart() {
         ) : (
           <Loading />
         )}
-        <div className="group relative flex w-32 cursor-pointer items-center justify-start rounded-lg bg-primary-400 px-6 py-2 hover:shadow-lg">
-          <span className="font-medium text-slate-50 transition-colors duration-100 ease-in-out">
-            Finalizar
-          </span>
-          <HiArrowSmRight
-            size={24}
-            color="#f8fafc"
-            className="group:hover:translate-x-2 absolute right-3 transition-all duration-150 ease-in-out group-hover:right-[10px]"
-          />
-        </div>
+        <FinishCart data={cart} />
       </div>
     </div>
   );

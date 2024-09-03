@@ -7,6 +7,7 @@ export interface CartContextProps {
   cart: CartItemProps[];
   addToCart: (item: CartItemProps) => void;
   removeFromCart: (item: CartItemProps) => void;
+  sendRequestToWhatsapp: () => void;
 }
 
 export const CartContext = createContext<CartContextProps>(
@@ -56,9 +57,38 @@ export function CartContextProvider({
     return;
   }
 
+  function sendRequestToWhatsapp() {
+    const phone = "5581984120544";
+    let total = 0;
+
+    cart.forEach((item) => {
+      total += item.value;
+    });
+
+    console.log(total);
+    let message =
+      "Olá, gostaria de fazer o meu pedido com os seguintes itens:\n";
+
+    cart.forEach((item) => {
+      message += `\n⚪ ${item.name} ${item.filling ? `*(${item.filling})*` : ""} x${item.quantity} - ${item.value.toLocaleString("pt-br", { style: "currency", currency: "BRL" })}\n`;
+    });
+
+    message += `\nTotal: *${total.toLocaleString("pt-br", { style: "currency", currency: "BRL" })}*`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodedMessage}`;
+    window.open(url);
+  }
+
   return (
     <CartContext.Provider
-      value={{ addToCart, cart, isLoading, removeFromCart }}
+      value={{
+        addToCart,
+        sendRequestToWhatsapp,
+        cart,
+        isLoading,
+        removeFromCart,
+      }}
     >
       {children}
     </CartContext.Provider>
