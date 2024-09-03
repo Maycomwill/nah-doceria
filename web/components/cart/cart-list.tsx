@@ -11,7 +11,7 @@ function CartList({ data }: CartListInterface) {
   const [cartItems, setCartItems] = useState<CartItemProps[]>(data);
   // console.log(cartItems);
   return (
-    <div className="grid w-full grid-cols-2 place-items-center pb-12 md:grid-cols-3 lg:grid-cols-4">
+    <div className="grid w-full grid-cols-2 place-content-start place-items-center items-baseline gap-4 md:grid-cols-3 md:gap-0 lg:grid-cols-4">
       {cartItems &&
         cartItems.map((item: CartItemProps) => {
           return (

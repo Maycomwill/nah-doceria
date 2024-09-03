@@ -2,11 +2,9 @@
 import CartList from "@/components/cart/cart-list";
 import FinishCart from "@/components/diologs/finish-cart";
 import Loading from "@/components/loading";
-import { Button } from "@/components/ui/button";
 import useCart from "@/hooks/useCart";
 import { CartItemProps } from "@/interfaces/products";
 import React, { useEffect } from "react";
-import { HiArrowSmRight } from "react-icons/hi";
 
 function Cart() {
   const { cart } = useCart();
