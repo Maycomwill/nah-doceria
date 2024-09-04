@@ -92,24 +92,26 @@ function FinishCart({ data, ...props }: FinishCartProps) {
             );
           })}
           <div className="my-4 h-px rounded-full bg-primary-400"></div>
-          <div className="flex w-full flex-col items-end justify-center">
-            <p className="font-title font-bold">Subtotal</p>
-            <span>
-              {subTotal !== undefined ? (
-                <span className="font-title text-xl font-bold leading-6 text-primary-500">
-                  {subTotal.toLocaleString("pt-br", {
-                    style: "currency",
-                    currency: "BRL",
-                  })}
-                </span>
-              ) : (
-                <Loading />
-              )}
-            </span>
+          <div className="flex flex-row-reverse items-center justify-between">
+            <div className="flex w-full flex-col items-end justify-center">
+              <p className="font-title font-bold">Subtotal</p>
+              <span>
+                {subTotal !== undefined ? (
+                  <span className="font-title text-xl font-bold leading-6 text-primary-500">
+                    {subTotal.toLocaleString("pt-br", {
+                      style: "currency",
+                      currency: "BRL",
+                    })}
+                  </span>
+                ) : (
+                  <Loading />
+                )}
+              </span>
+            </div>
+            <form onSubmit={handleSubmit}>
+              <Button type="submit">Finalizar</Button>
+            </form>
           </div>
-          <form onSubmit={handleSubmit}>
-            <Button type="submit">Finalizar</Button>
-          </form>
         </div>
       </DialogContent>
     </Dialog>
