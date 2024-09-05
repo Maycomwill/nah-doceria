@@ -65,11 +65,14 @@ function Home() {
           </div>
         </div>
       </section>
-      <section className="min-h-[350px]" id="contact">
+      <section
+        className="flex w-full flex-col items-center justify-center px-12 md:items-start"
+        id="contact"
+      >
         <h2 className="text-center font-title text-4xl font-bold uppercase tracking-wider md:text-left">
           Contato
         </h2>
-        <div className="flex w-full flex-col items-center justify-center space-y-6 pt-6">
+        <div className="flex w-full flex-col items-center justify-center space-y-2 pt-6 text-center md:items-start md:space-y-6 md:text-left">
           <p>Você pode me encontrar nas redes sociais</p>
 
           <div className="flex flex-row items-center justify-center space-x-4">

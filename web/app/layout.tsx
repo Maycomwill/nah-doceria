@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/header";
 import AppProvider from "@/hooks";
+import Footer from "@/components/footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -64,6 +65,7 @@ export default function RootLayout({
         >
           <Header />
           {children}
+          <Footer />
         </body>
       </AppProvider>
     </html>

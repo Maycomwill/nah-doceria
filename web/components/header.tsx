@@ -6,7 +6,7 @@ import { ShoppingBagIcon } from "lucide-react";
 
 function Header() {
   return (
-    <div className="sticky flex h-20 w-full items-center justify-center rounded-none bg-primary-300 text-secondary-950 dark:bg-primary-200 dark:text-secondary-900 md:top-6 md:h-24 md:rounded-[2rem] lg:left-0 lg:z-20 lg:w-[80%]">
+    <div className="sticky z-20 flex h-20 w-full items-center justify-center rounded-none bg-primary-300 text-secondary-950 dark:bg-primary-200 dark:text-secondary-900 md:top-6 md:h-24 md:w-[90%] md:rounded-[2rem] lg:left-0 lg:z-20 lg:w-[80%]">
       <ul className="relative flex h-full w-full items-center justify-between px-12 md:px-28">
         <li className="hidden min-w-20 items-center justify-center font-title text-xl transition-colors duration-150 ease-in-out hover:text-secondary-600 md:flex">
           <Link href="/#">Home</Link>
