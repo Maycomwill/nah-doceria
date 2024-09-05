@@ -1,5 +1,6 @@
 "use client";
 import CartList from "@/components/cart/cart-list";
+import ClearCart from "@/components/diologs/clear-cart";
 import FinishCart from "@/components/diologs/finish-cart";
 import Loading from "@/components/loading";
 import useCart from "@/hooks/useCart";
@@ -7,27 +8,26 @@ import { CartItemProps } from "@/interfaces/products";
 import React, { useEffect } from "react";
 
 function Cart() {
-  const { cart } = useCart();
+  const { cart, isLoading } = useCart();
   const [subtotal, setSubtotal] = React.useState<number | undefined>(undefined);
   useEffect(() => {
     handleSubtotal(cart);
-  }, [subtotal]);
+  }, []);
 
   function handleSubtotal(data: CartItemProps[]) {
     setSubtotal(0);
     let subtotal = 0;
     data.forEach((item) => {
-      subtotal +=
-        (item.discount ? item.price - item.price * item.discount : item.price) *
-        item.quantity;
+      subtotal += item.value;
     });
     setSubtotal(subtotal);
+    return;
   }
 
   return (
     <div className="flex h-full w-full flex-col items-start justify-center px-12 pb-14 pt-14">
       <h1 className="font-title text-4xl font-bold tracking-wider">Carrinho</h1>
-      <CartList data={cart} />
+      {isLoading ? <Loading /> : <CartList />}
       <div className="flex w-full flex-col items-end justify-end space-y-4 pb-2">
         <h2 className="font-title text-4xl font-bold leading-6 tracking-wider">
           Subtotal
@@ -43,6 +43,7 @@ function Cart() {
           <Loading />
         )}
         <FinishCart data={cart} />
+        <ClearCart />
       </div>
     </div>
   );

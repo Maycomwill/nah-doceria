@@ -8,6 +8,7 @@ export interface CartContextProps {
   addToCart: (item: CartItemProps) => void;
   removeFromCart: (item: CartItemProps) => void;
   sendRequestToWhatsapp: () => void;
+  clearCart: () => void;
 }
 
 export const CartContext = createContext<CartContextProps>(
@@ -25,12 +26,17 @@ export function CartContextProvider({
     verifyPreviousData();
   }, []);
   function verifyPreviousData() {
+    setIsLoading(true);
     const data = localStorage.getItem("nd_cart");
     if (!data || data === null) {
       localStorage.removeItem("nd_cart");
       setCart([]);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
       return;
     }
+    setIsLoading(false);
     return setCart(JSON.parse(data));
   }
 
@@ -77,12 +83,22 @@ export function CartContextProvider({
 
     const encodedMessage = encodeURIComponent(message);
     const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodedMessage}`;
-    window.open(url);
+    window.open(url, "_blank");
+    return;
+  }
+
+  function clearCart() {
+    setIsLoading(true);
+    setCart([]);
+    localStorage.removeItem("nd_cart");
+    setIsLoading(false);
+    return;
   }
 
   return (
     <CartContext.Provider
       value={{
+        clearCart,
         addToCart,
         sendRequestToWhatsapp,
         cart,
