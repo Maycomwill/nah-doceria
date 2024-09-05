@@ -35,12 +35,13 @@ function FinishCart({ data, ...props }: FinishCartProps) {
 
   useEffect(() => {
     handleSubtotal(data);
-  }, []);
+  }, [data]);
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-
     sendRequestToWhatsapp();
+    setOpen(false);
+    return;
   }
   return (
     <Dialog {...props} open={open} onOpenChange={setOpen}>

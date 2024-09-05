@@ -84,7 +84,7 @@ function BuyDialog({ data, ...props }: BuyDialogProps) {
                     onChange={(e) => setFilling(e.target.value)}
                     required
                   >
-                    <option value="" disabled selected>
+                    <option value="" disabled>
                       Selecione um sabor
                     </option>
                     <option value="chocolate">Chocolate</option>
@@ -108,7 +108,7 @@ function BuyDialog({ data, ...props }: BuyDialogProps) {
                     onChange={(e) => setFilling(e.target.value)}
                     required
                   >
-                    <option value="" disabled selected>
+                    <option value="" disabled>
                       Selecione uma cobertura
                     </option>
                     <option value="chocolate">Chocolate</option>

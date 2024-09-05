@@ -14,17 +14,13 @@ import {
 import useCart from "@/hooks/useCart";
 
 import { Button } from "../ui/button";
-import { useRouter } from "next/navigation";
 
 function ClearCart() {
   const [open, setOpen] = useState(false);
-  const [subTotal, setSubTotal] = useState(0);
   const { clearCart } = useCart();
-  const router = useRouter();
   function handleSubmit() {
     clearCart();
     setOpen(false);
-    window.location.reload();
   }
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>

@@ -12,7 +12,7 @@ function Cart() {
   const [subtotal, setSubtotal] = React.useState<number | undefined>(undefined);
   useEffect(() => {
     handleSubtotal(cart);
-  }, []);
+  }, [cart]);
 
   function handleSubtotal(data: CartItemProps[]) {
     setSubtotal(0);
@@ -25,7 +25,7 @@ function Cart() {
   }
 
   return (
-    <div className="flex h-full w-full flex-col items-start justify-center px-12 pb-14 pt-14">
+    <div className="flex h-full min-h-[80vh] w-full flex-col items-start justify-start px-12 pb-14 pt-14">
       <h1 className="font-title text-4xl font-bold tracking-wider">Carrinho</h1>
       {isLoading ? <Loading /> : <CartList />}
       <div className="flex w-full flex-col items-end justify-end space-y-4 pb-2">
