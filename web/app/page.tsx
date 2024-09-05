@@ -1,11 +1,14 @@
 import React from "react";
 import MenuItem from "@/components/menu-item";
 import { data } from "@/lib/fakeData";
+import { InstagramLogoIcon } from "@radix-ui/react-icons";
+import { FaWhatsapp, FaInstagram } from "react-icons/fa";
+import Link from "next/link";
 function Home() {
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center">
+    <div className="flex h-full w-full flex-col items-center justify-center space-y-12">
       <section
-        className="flex min-h-[550px] w-full items-start justify-start pt-14"
+        className="flex w-full items-start justify-start pt-14 md:min-h-[250px]"
         id="/"
       >
         <div className="mx-auto flex flex-col items-center justify-center">
@@ -26,42 +29,68 @@ function Home() {
         </div>
       </section>
       <section
-        className="flex min-h-[550px] w-full flex-col items-center justify-start px-12"
+        className="flex w-full flex-col items-center justify-start px-12"
         id="menu"
       >
-        <div className="w-full">
-          <h2 className="font-title text-4xl font-bold uppercase tracking-wider">
-            Doces
-          </h2>
-          <div className="grid w-full grid-cols-2 place-content-start place-items-center items-baseline gap-4 md:grid-cols-3 md:gap-0 lg:grid-cols-4">
-            {data.doces.map((item) => {
-              return <MenuItem data={item} key={item.name} />;
-            })}
+        <div className="flex w-full flex-col items-center justify-center space-y-4">
+          <div className="flex w-full flex-col space-y-2">
+            <h2 className="text-center font-title text-4xl font-bold uppercase tracking-wider md:text-left">
+              Doces
+            </h2>
+            <div className="grid w-full grid-cols-2 place-content-start place-items-center items-baseline gap-4 md:grid-cols-3 md:gap-0 lg:grid-cols-4">
+              {data.doces.map((item) => {
+                return <MenuItem data={item} key={item.name} />;
+              })}
+            </div>
           </div>
-        </div>
-        <div className="w-full">
-          <h2 className="font-title text-4xl font-bold uppercase tracking-wider">
-            Trufas
-          </h2>
-          <div className="grid w-full grid-cols-2 place-content-start place-items-center items-baseline gap-4 md:grid-cols-3 md:gap-0 lg:grid-cols-4">
-            {data.trufas.map((item) => {
-              return <MenuItem data={item} key={item.name} />;
-            })}
+          <div className="flex w-full flex-col space-y-2">
+            <h2 className="text-center font-title text-4xl font-bold uppercase tracking-wider md:text-left">
+              Trufas
+            </h2>
+            <div className="grid w-full grid-cols-2 place-content-start place-items-center items-baseline gap-4 md:grid-cols-3 md:gap-0 lg:grid-cols-4">
+              {data.trufas.map((item) => {
+                return <MenuItem data={item} key={item.name} />;
+              })}
+            </div>
           </div>
-        </div>
-        <div className="w-full">
-          <h2 className="font-title text-4xl font-bold uppercase tracking-wider">
-            Brownies
-          </h2>
-          <div className="grid w-full grid-cols-2 place-content-start place-items-center items-baseline gap-4 md:grid-cols-3 md:gap-0 lg:grid-cols-4">
-            {data.brownies.map((item) => {
-              return <MenuItem data={item} key={item.name} />;
-            })}
+          <div className="flex w-full flex-col space-y-2">
+            <h2 className="text-center font-title text-4xl font-bold uppercase tracking-wider md:text-left">
+              Brownies
+            </h2>
+            <div className="grid w-full grid-cols-2 place-content-start place-items-center items-baseline gap-4 md:grid-cols-3 md:gap-0 lg:grid-cols-4">
+              {data.brownies.map((item) => {
+                return <MenuItem data={item} key={item.name} />;
+              })}
+            </div>
           </div>
         </div>
       </section>
-      <section className="min-h-[550px]" id="contact">
-        contato
+      <section className="min-h-[350px]" id="contact">
+        <h2 className="text-center font-title text-4xl font-bold uppercase tracking-wider md:text-left">
+          Contato
+        </h2>
+        <div className="flex w-full flex-col items-center justify-center space-y-6 pt-6">
+          <p>Você pode me encontrar nas redes sociais</p>
+
+          <div className="flex flex-row items-center justify-center space-x-4">
+            <Link
+              href={"https://www.instagram.com/nah.doceriaa/"}
+              rel="noopener"
+              target="_blank"
+              className="group flex cursor-pointer items-center justify-center rounded-full bg-transparent p-4 hover:bg-primary-200/50"
+            >
+              <FaInstagram className="size-10 text-primary-400 transition-all duration-200 ease-in-out group-hover:text-primary-500" />
+            </Link>
+            <Link
+              href={"https://api.whatsapp.com/send?phone=5581984120544"}
+              rel="noopener"
+              target="_blank"
+              className="group flex cursor-pointer items-center justify-center rounded-full bg-transparent p-4 hover:bg-primary-200/50"
+            >
+              <FaWhatsapp className="size-10 text-primary-400 transition-all duration-200 ease-in-out group-hover:text-primary-500" />
+            </Link>
+          </div>
+        </div>
       </section>
     </div>
   );
