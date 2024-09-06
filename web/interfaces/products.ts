@@ -6,7 +6,7 @@ export interface MenuItemProps {
   description?: string;
   picture: string | StaticImageData;
   price: number;
-  discount: number;
+  discount?: number;
   available: boolean;
   category: string;
 }

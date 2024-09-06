@@ -10,11 +10,22 @@ interface MenuItemProps extends React.HTMLAttributes<HTMLDivElement> {
     price: number;
     discount?: number;
     available: boolean;
+    id: string;
+    category: string;
   };
 }
 
 function MenuItem({ data, ...props }: MenuItemProps) {
-  const { name, description, picture, price, discount, available } = data;
+  const {
+    name,
+    description,
+    picture,
+    price,
+    discount,
+    available,
+    category,
+    id,
+  } = data;
   return (
     <div
       {...props}
