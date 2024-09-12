@@ -18,7 +18,7 @@ function Home() {
               <span className="font-title text-[7rem] leading-[8rem] text-primary-400">
                 Nah
               </span>{" "}
-              <span className="font-detail text-[12rem] leading-[4rem] text-secondary-900">
+              <span className="font-detail text-[12rem] font-medium leading-[4rem] text-secondary-900">
                 doceria
               </span>
             </h1>
@@ -29,7 +29,7 @@ function Home() {
         </div>
       </section>
       <section
-        className="flex w-full flex-col items-center justify-start px-12"
+        className="flex w-full flex-col items-center justify-start px-6 md:px-12"
         id="menu"
       >
         <div className="flex w-full flex-col items-center justify-center space-y-4">

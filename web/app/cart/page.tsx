@@ -27,7 +27,9 @@ function Cart() {
   return (
     <div className="flex h-full min-h-[80vh] w-full flex-col items-start justify-start px-12 pb-14 pt-14">
       <h1 className="font-title text-4xl font-bold tracking-wider">Carrinho</h1>
-      {isLoading ? <Loading /> : <CartList />}
+      <div className="flex min-h-96 w-full items-center justify-center">
+        {isLoading ? <Loading size={56} /> : <CartList />}
+      </div>
       <div className="flex w-full flex-col items-end justify-end space-y-4 pb-2">
         <h2 className="font-title text-4xl font-bold leading-6 tracking-wider">
           Subtotal

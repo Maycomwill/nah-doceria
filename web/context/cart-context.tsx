@@ -21,7 +21,7 @@ export function CartContextProvider({
   children: React.ReactNode;
 }) {
   const [cart, setCart] = useState<CartItemProps[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     verifyPreviousData();
   }, []);
