@@ -84,7 +84,7 @@ const brownies = [
     description: "Brownie de chocolate com cobertura",
     picture: BrownieCobertura,
     price: 6,
-    available: false,
+    available: true,
     category: "brownies",
   },
 ];

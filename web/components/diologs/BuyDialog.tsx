@@ -99,7 +99,7 @@ function BuyDialog({ data, ...props }: BuyDialogProps) {
                   </select>
                 </div>
               )}
-              {data.category === "brownies" && (
+              {data.name.includes("Cobertura") && (
                 <div>
                   <select
                     className="rounded-md border-none bg-transparent p-2 outline-none ring-1 ring-primary-400 focus-visible:ring-primary-500"
