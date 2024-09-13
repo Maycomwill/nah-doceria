@@ -3,9 +3,10 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="flex w-full flex-col items-center justify-center space-y-2 py-4">
-      <p className="font-sans text-xs md:text-sm">
-        Copyright © 2024 - Todos os direitos reservados a Nah Doceria
+    <footer className="flex w-full flex-col items-center justify-center space-y-2 px-4 py-4">
+      <p className="flex flex-col text-center font-sans text-xs md:text-sm">
+        Copyright © 2024 - Todos os direitos reservados a {""}
+        <span>Nah Doceria</span>
       </p>
 
       <p className="font-sans text-xs md:text-sm">

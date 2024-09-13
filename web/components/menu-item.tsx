@@ -46,11 +46,11 @@ function MenuItem({ data, ...props }: MenuItemProps) {
         )}
       </div>
       <div className="flex flex-col items-center justify-between space-y-1">
-        <span className="text-center text-lg font-medium capitalize">
-          {name}
-        </span>
+        <span className="text-center text-lg capitalize">{name}</span>
         {description && (
-          <span className="text-center text-sm">{description}</span>
+          <span className="w-[60%] text-center text-sm font-light md:w-[80%] lg:w-full">
+            {description}
+          </span>
         )}
         <span className="font-medium">
           {discount
