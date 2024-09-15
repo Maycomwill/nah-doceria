@@ -44,8 +44,42 @@ export function CartContextProvider({
     setIsLoading(true);
     const newId = nanoid();
     const newItem = { ...item, id: newId };
+
+    //Check if item is from candy category
+    if (item.category === "doces") {
+      // Check if item already exists
+      const a = cart.filter((i) => {
+        return i.name === item.name;
+      });
+
+      // Get the original item
+      let originalItem = a.filter((item, index) => {
+        return a.findIndex((i) => i.name === item.name) === index;
+      })[0];
+
+      // If item already exists, add quantity
+      if (originalItem) {
+        originalItem.quantity += item.quantity;
+        // console.log("List without duplicates", originalItem);
+        const filteredCart = cart.filter((i) => {
+          return i.id !== originalItem.id;
+        });
+        // console.log("List without original item", filteredCart);
+
+        // Set cart with new quantity of same item
+        setCart([...filteredCart, originalItem]);
+        localStorage.setItem(
+          "nd_cart",
+          JSON.stringify([...filteredCart, originalItem]),
+        );
+        return setTimeout(() => {
+          setIsLoading(false);
+        }, 2000);
+      }
+    }
+
     setCart([...cart, newItem]);
-    console.log("newItem", newItem);
+    // console.log("newItem", newItem);
     localStorage.setItem("nd_cart", JSON.stringify([...cart, newItem]));
     return setTimeout(() => {
       setIsLoading(false);
