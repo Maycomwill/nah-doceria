@@ -13,6 +13,7 @@ import { DialogProps } from "@radix-ui/react-dialog";
 import { MenuItemProps } from "@/interfaces/products";
 import useCart from "@/hooks/useCart";
 import Loading from "../loading";
+import { useRouter } from "next/navigation";
 
 interface BuyDialogProps extends DialogProps {
   data: MenuItemProps;
@@ -23,6 +24,7 @@ function BuyDialog({ data, ...props }: BuyDialogProps) {
   const [open, setOpen] = useState(false);
   const [filling, setFilling] = useState("");
   const { addToCart, isLoading } = useCart();
+  const router = useRouter();
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     addToCart({
@@ -37,6 +39,23 @@ function BuyDialog({ data, ...props }: BuyDialogProps) {
     setFilling("");
     setQuantity(1);
     setOpen(false);
+    return;
+  }
+  function handleBuyNow(e: FormEvent) {
+    e.preventDefault();
+    addToCart({
+      ...data,
+      quantity,
+      filling: filling ? filling : undefined,
+      value:
+        (data.discount ? data.price - data.price * data.discount : data.price) *
+        quantity,
+    });
+
+    setFilling("");
+    setQuantity(1);
+    setOpen(false);
+    router.push("/cart");
     return;
   }
   return (
@@ -118,8 +137,18 @@ function BuyDialog({ data, ...props }: BuyDialogProps) {
                   </select>
                 </div>
               )}
-              <div className="mx-auto">
-                <Button type="submit">Confirmar</Button>
+              <div className="flex w-full flex-col items-center justify-center space-y-2 pt-12 md:flex-row md:justify-between md:space-y-0">
+                <Button type="submit" className="w-full md:w-auto">
+                  Adicionar ao carrinho
+                </Button>
+                <Button
+                  type="button"
+                  onClick={handleBuyNow}
+                  variant={"outline"}
+                  className="w-full md:w-auto"
+                >
+                  Comprar agora
+                </Button>
               </div>
             </form>
           </div>
