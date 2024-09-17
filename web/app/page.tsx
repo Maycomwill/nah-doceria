@@ -11,7 +11,7 @@ function Home() {
         className="flex w-full items-start justify-start pt-14 md:min-h-[250px]"
         id="/"
       >
-        <div className="mx-auto flex flex-col items-center justify-center">
+        <div className="mx-auto flex select-none flex-col items-center justify-center">
           <div className="flex flex-col items-center justify-start">
             <span className="text-2xl">Bem vindo(a) a</span>
             <h1 className="flex flex-col items-center">
