@@ -17,14 +17,14 @@ function CartItem({ data, ...props }: CartItemInterface) {
       <div className="group relative">
         <RemoveItemFromCart item={data} />
         {discount && (
-          <div className="absolute -top-4 right-0 rounded-xl bg-red-500 p-2 shadow-md">
+          <div className="absolute -bottom-1 -left-4 rounded-xl bg-red-500 px-2 py-1 shadow-md">
             <span className="text-xs font-bold text-slate-50">
               -{discount * 100}%
             </span>
           </div>
         )}
         {quantity && (
-          <div className="absolute -right-2 bottom-0">
+          <div className="absolute -bottom-1 -right-2 py-1">
             <span className="text-xs font-bold text-slate-950">
               {quantity}x
             </span>
