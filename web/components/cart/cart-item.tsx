@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { CartItemProps } from "@/interfaces/products";
 import RemoveItemFromCart from "../diologs/remove-item-from-cart";
+import ChangeItemQuantity from "../diologs/change-item-quantity";
 
 interface CartItemInterface extends React.HTMLAttributes<HTMLDivElement> {
   data: CartItemProps;
@@ -16,6 +17,7 @@ function CartItem({ data, ...props }: CartItemInterface) {
     >
       <div className="group relative">
         <RemoveItemFromCart item={data} />
+        <ChangeItemQuantity item={data} />
         {discount && (
           <div className="absolute -bottom-1 -left-4 rounded-xl bg-red-500 px-2 py-1 shadow-md">
             <span className="text-xs font-bold text-slate-50">

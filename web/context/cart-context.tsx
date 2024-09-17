@@ -7,6 +7,7 @@ export interface CartContextProps {
   cart: CartItemProps[];
   addToCart: (item: CartItemProps) => void;
   removeFromCart: (item: CartItemProps) => void;
+  changeQuantity: (item: CartItemProps, quantity: number) => void;
   sendRequestToWhatsapp: () => void;
   clearCart: () => void;
 }
@@ -110,6 +111,31 @@ export function CartContextProvider({
     return;
   }
 
+  function changeQuantity(item: CartItemProps, quantity: number) {
+    setCart(
+      cart.map((i) =>
+        i.id === item.id
+          ? {
+              ...item,
+              quantity,
+              value:
+                (item.discount
+                  ? item.price - item.price * item.discount
+                  : item.price) * quantity,
+            }
+          : i,
+      ),
+    );
+    console.log("cart-context: chamou a função de alterar quantidade");
+    localStorage.setItem(
+      "nd_cart",
+      JSON.stringify(
+        cart.map((i) => (i.id === item.id ? { ...item, quantity } : i)),
+      ),
+    );
+    return;
+  }
+
   function sendRequestToWhatsapp() {
     const phone = "5581984120544";
     let total = 0;
@@ -146,6 +172,7 @@ export function CartContextProvider({
     <CartContext.Provider
       value={{
         clearCart,
+        changeQuantity,
         addToCart,
         sendRequestToWhatsapp,
         cart,
