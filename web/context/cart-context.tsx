@@ -78,6 +78,19 @@ export function CartContextProvider({
       }
     }
 
+    // Check if item is from truffles category
+    if (item.category === "trufas") {
+      // Check if item already exists
+      const a = cart.filter((i) => {
+        return i.name === item.name;
+      });
+
+      // Get the original item
+      let originalItem = a.filter((item, index) => {
+        return a.findIndex((i) => i.name === item.name) === index;
+      })[0];
+    }
+
     setCart([...cart, newItem]);
     // console.log("newItem", newItem);
     localStorage.setItem("nd_cart", JSON.stringify([...cart, newItem]));
