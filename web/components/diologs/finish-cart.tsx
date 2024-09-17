@@ -76,9 +76,8 @@ function FinishCart({ data, ...props }: FinishCartProps) {
                   <span className="font-bold">
                     {item.discount
                       ? (
-                          item.price *
-                          item.discount *
-                          item.quantity
+                          item.price -
+                          item.discount * item.price * item.quantity
                         ).toLocaleString("pt-br", {
                           style: "currency",
                           currency: "BRL",
