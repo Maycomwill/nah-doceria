@@ -46,6 +46,9 @@ export function AddressContextProvider({
 
   function addAddress(address: Address) {
     setIsLoading(true);
+    if (address.address === "") {
+      return;
+    }
 
     // console.log("address context: ", address);
 

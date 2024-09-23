@@ -46,6 +46,8 @@ function FinishCart({ data, ...props }: FinishCartProps) {
   function handleSubtotal(data: CartItemProps[]) {
     setSubTotal(0);
     let subtotal = 0;
+    if (data === undefined) return;
+    // console.log(data);
     data.forEach((item) => {
       subtotal += item.value;
     });
