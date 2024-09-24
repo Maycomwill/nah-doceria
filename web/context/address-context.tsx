@@ -73,7 +73,7 @@ export function AddressContextProvider({
           a.neighborhood === address.neighborhood &&
           a.complement === address.complement,
       )[0];
-      console.log("default address: ", defaultAddress);
+      // console.log("default address: ", defaultAddress);
       if (address.isDefault !== defaultAddress.isDefault) {
         const new_address = {
           ...defaultAddress,
@@ -85,7 +85,7 @@ export function AddressContextProvider({
             (a) => a.id !== new_address.id,
           );
 
-          console.log("lista sem o endereço atual", clear_list);
+          // console.log("lista sem o endereço atual", clear_list);
           setAddresses([...clear_list, new_address]);
           localStorage.setItem(
             "nd_addresses",

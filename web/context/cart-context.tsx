@@ -2,6 +2,7 @@ import { CartItemProps } from "@/interfaces/products";
 import { createContext, useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 import { CartProps } from "@/interfaces/cart";
+import { Address } from "@/interfaces/address";
 
 export interface CartContextProps {
   isLoading: boolean;
@@ -12,6 +13,7 @@ export interface CartContextProps {
   sendRequestToWhatsapp: () => void;
   clearCart: () => void;
   handleDeliveryOption: (option: boolean) => void;
+  handleSelectAddress: (address: Address) => void;
 }
 
 export const CartContext = createContext<CartContextProps>(
@@ -34,7 +36,7 @@ export function CartContextProvider({
     const data = localStorage.getItem("nd_cart");
     if (!data || data === null) {
       localStorage.removeItem("nd_cart");
-      setCart({ delivery: true, data: [] });
+      setCart({ delivery: { option: true }, data: [] });
       setTimeout(() => {
         setIsLoading(false);
       }, 1000);
@@ -154,7 +156,7 @@ export function CartContextProvider({
   }
 
   function sendRequestToWhatsapp() {
-    const phone = "5581984120544";
+    const phone = "5581984317191";
     let total = 0;
 
     cart.data.forEach((item) => {
@@ -166,8 +168,18 @@ export function CartContextProvider({
       "Olá, gostaria de fazer o meu pedido com os seguintes itens:\n";
 
     cart.data.forEach((item) => {
-      message += `\n⚪ ${item.name} ${item.filling ? `*(${item.filling})*` : ""} x${item.quantity} - ${item.value.toLocaleString("pt-br", { style: "currency", currency: "BRL" })}\n`;
+      message += `\n⚪ *${item.name} ${item.filling ? `(${item.filling})` : ""} x${item.quantity} - ${item.value.toLocaleString("pt-br", { style: "currency", currency: "BRL" })}*\n`;
     });
+
+    if (!cart.delivery.option) {
+      message += `\nRetirada no local\n`;
+    } else {
+      message += `\nEntrega no endereço:`;
+
+      message += `\nEndereço: ${cart.delivery.address?.address}, ${cart.delivery.address?.neighborhood}, ${cart.delivery.address?.city}, ${cart.delivery.address?.complement} - ${cart.delivery.address?.zipCode}\n`;
+
+      message += `Entregar a: ${cart.delivery.address?.buyer}\n`;
+    }
 
     message += `\nTotal: *${total.toLocaleString("pt-br", { style: "currency", currency: "BRL" })}*`;
 
@@ -179,18 +191,28 @@ export function CartContextProvider({
 
   function clearCart() {
     setIsLoading(true);
-    setCart({ delivery: true, data: [] });
+    setCart({ delivery: { option: true }, data: [] });
     localStorage.removeItem("nd_cart");
     setIsLoading(false);
     return;
   }
 
-  function handleDeliveryOption(option: boolean) {
-    console.log("delivery option", option);
-    setCart({ ...cart, delivery: option });
+  function handleDeliveryOption(delivery_option: boolean) {
+    // console.log("delivery option", delivery_option);
+    console.log("cart", cart);
+    setCart({ ...cart, delivery: { option: delivery_option } });
     localStorage.setItem(
       "nd_cart",
-      JSON.stringify({ ...cart, delivery: option }),
+      JSON.stringify({ ...cart, delivery: { option: delivery_option } }),
+    );
+    return;
+  }
+
+  function handleSelectAddress(address: Address) {
+    setCart({ ...cart, delivery: { option: true, address } });
+    localStorage.setItem(
+      "nd_cart",
+      JSON.stringify({ ...cart, delivery: { option: true, address } }),
     );
     return;
   }
@@ -199,6 +221,7 @@ export function CartContextProvider({
     <CartContext.Provider
       value={{
         handleDeliveryOption,
+        handleSelectAddress,
         clearCart,
         changeQuantity,
         addToCart,

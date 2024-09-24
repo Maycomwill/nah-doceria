@@ -45,19 +45,20 @@ function AddressForm({
     defaultAddress?.isDefault || false,
   );
   const [delivery, setDelivery] = useState(true);
-  const { handleDeliveryOption } = useCart();
+  const { handleDeliveryOption, handleSelectAddress } = useCart();
 
   function handleAddressSelect(value: string) {
-    console.log(value);
+    // console.log(value);
     setDefaultAddress(addresses.filter((a) => a.id === value)[0]);
   }
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     const newId = nanoid();
+    handleDeliveryOption(delivery);
     {
       delivery &&
-        addAddress({
+        (addAddress({
           id: newId,
           address,
           neighborhood,
@@ -66,9 +67,18 @@ function AddressForm({
           complement,
           buyer,
           isDefault,
-        });
+        }),
+        handleSelectAddress({
+          id: newId,
+          address,
+          neighborhood,
+          city,
+          zipCode,
+          complement,
+          buyer,
+          isDefault,
+        }));
     }
-    handleDeliveryOption(delivery);
     setStep(2);
   }
 
