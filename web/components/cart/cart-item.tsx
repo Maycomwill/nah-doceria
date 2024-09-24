@@ -13,13 +13,13 @@ function CartItem({ data, ...props }: CartItemInterface) {
   return (
     <div
       {...props}
-      className="flex w-[240px] max-w-[240px] flex-col items-center space-y-2 bg-transparent px-4 py-6"
+      className="flex w-[240px] max-w-[240px] flex-col items-center space-y-2 bg-transparent px-2 py-6"
     >
       <div className="group relative">
         <RemoveItemFromCart item={data} />
         <ChangeItemQuantity item={data} />
         {discount && (
-          <div className="absolute -bottom-1 -left-4 rounded-xl bg-red-500 px-2 py-1 shadow-md">
+          <div className="absolute -bottom-1 -left-4 rounded-xl bg-red-500 py-1 shadow-md">
             <span className="text-xs font-bold text-slate-50">
               -{discount * 100}%
             </span>
