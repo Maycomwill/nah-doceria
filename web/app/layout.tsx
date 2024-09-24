@@ -4,8 +4,9 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/header";
 import AppProvider from "@/hooks";
-import { Toaster } from "sonner";
+
 import Footer from "@/components/footer";
+import { Toaster } from "sonner";
 
 const poppins = Poppins({
   subsets: ["latin"],
