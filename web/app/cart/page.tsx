@@ -11,12 +11,13 @@ function Cart() {
   const { cart, isLoading } = useCart();
   const [subtotal, setSubtotal] = React.useState<number | undefined>(undefined);
   useEffect(() => {
-    handleSubtotal(cart);
+    handleSubtotal(cart.data);
   }, [cart]);
 
   function handleSubtotal(data: CartItemProps[]) {
     setSubtotal(0);
     let subtotal = 0;
+    if (data === undefined) return;
     data.forEach((item) => {
       subtotal += item.value;
     });
@@ -44,7 +45,7 @@ function Cart() {
         ) : (
           <Loading />
         )}
-        <FinishCart data={cart} />
+        <FinishCart data={cart.data} />
         <ClearCart />
       </div>
     </div>

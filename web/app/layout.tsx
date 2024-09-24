@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/header";
 import AppProvider from "@/hooks";
+import { Toaster } from "sonner";
 import Footer from "@/components/footer";
 
 const poppins = Poppins({
@@ -63,6 +64,7 @@ export default function RootLayout({
         <body
           className={`${poppins.variable} ${miss.variable} ${roca.variable} relative flex w-full flex-col items-center justify-start bg-cover font-sans`}
         >
+          <Toaster richColors />
           <Header />
           {children}
           <Footer />

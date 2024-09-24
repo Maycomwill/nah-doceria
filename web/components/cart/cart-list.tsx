@@ -13,11 +13,11 @@ function CartList() {
     <div
       className={clsx("flex w-full flex-1 items-center justify-center", {
         "grid w-full grid-cols-2 place-content-start place-items-center items-baseline gap-4 md:grid-cols-3 md:gap-0 lg:grid-cols-4":
-          cart.length >= 1,
+          cart.data.length >= 1,
       })}
     >
-      {cart.length > 0 ? (
-        cart.map((item: CartItemProps) => {
+      {cart.data.length > 0 ? (
+        cart.data.map((item: CartItemProps) => {
           return (
             <div key={item.id}>
               <CartItem data={item} />
@@ -29,9 +29,9 @@ function CartList() {
           <Image
             src={EmptyCart}
             alt="Carrinho vazio"
-            className="animate-fade-down-in size-36"
+            className="size-36 animate-fade-down-in"
           />
-          <p>Seu carrinho está vazio no momento ...</p>
+          <p className="text-center">Seu carrinho está vazio no momento ...</p>
         </div>
       )}
     </div>
