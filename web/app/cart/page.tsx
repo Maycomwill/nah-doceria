@@ -45,7 +45,7 @@ function Cart() {
           })}
         </span>
 
-        <FinishCart data={cart.data} />
+        <FinishCart />
         <ClearCart />
       </div>
     </div>

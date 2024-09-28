@@ -42,7 +42,7 @@ function Home() {
               {data.doces.map((item, index) => {
                 return (
                   <MenuItem
-                    className={`${index === data.doces.length - 1 && data.doces.length % 2 !== 0 ? "col-span-2" : "col-span-1"}`}
+                    className={`${index === data.doces.length - 1 && data.doces.length % 2 !== 0 ? "col-span-2 md:col-span-1 lg:col-span-1" : "col-span-1"}`}
                     data={item}
                     key={item.name}
                   />
@@ -58,7 +58,7 @@ function Home() {
               {data.trufas.map((item, index) => {
                 return (
                   <MenuItem
-                    className={`${index === data.trufas.length - 1 && data.trufas.length % 2 !== 0 ? "col-span-2" : "col-span-1"}`}
+                    className={`${index === data.trufas.length - 1 && data.trufas.length % 2 !== 0 ? "col-span-2 md:col-span-1 lg:col-span-1" : "col-span-1"}`}
                     data={item}
                     key={item.name}
                   />
@@ -74,7 +74,7 @@ function Home() {
               {data.brownies.map((item, index) => {
                 return (
                   <MenuItem
-                    className={`${index === data.brownies.length - 1 && data.brownies.length % 2 !== 0 ? "col-span-2" : "col-span-1"}`}
+                    className={`${index === data.brownies.length - 1 && data.brownies.length % 2 !== 0 ? "col-span-2 md:col-span-1 lg:col-span-1" : "col-span-1"}`}
                     data={item}
                     key={item.name}
                   />

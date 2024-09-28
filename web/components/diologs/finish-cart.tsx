@@ -9,7 +9,6 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import { Button } from "../ui/button";
-import { DialogProps } from "@radix-ui/react-dialog";
 import { CartItemProps } from "@/interfaces/products";
 import useCart from "@/hooks/useCart";
 import Loading from "../loading";
@@ -17,15 +16,12 @@ import { HiArrowSmRight } from "react-icons/hi";
 import clsx from "clsx";
 import AddressForm from "../address-form";
 
-interface FinishCartProps extends DialogProps {
-  data: CartItemProps[];
-}
-
-function FinishCart({ data, ...props }: FinishCartProps) {
+function FinishCart() {
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState(1);
   const [subTotal, setSubTotal] = useState(0);
   const { sendRequestToWhatsapp } = useCart();
+  const { cart } = useCart();
 
   function handleNextStep() {
     if (step === 2) {
@@ -55,8 +51,8 @@ function FinishCart({ data, ...props }: FinishCartProps) {
   }
 
   useEffect(() => {
-    handleSubtotal(data);
-  }, [data]);
+    handleSubtotal(cart.data);
+  }, [cart]);
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -66,7 +62,7 @@ function FinishCart({ data, ...props }: FinishCartProps) {
     return;
   }
   return (
-    <Dialog {...props} open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger onClick={() => setOpen(true)}>
         <div className="group relative flex w-32 cursor-pointer items-center justify-start rounded-lg bg-primary-400 px-6 py-2 hover:shadow-lg">
           <span className="font-medium text-slate-50 transition-colors duration-100 ease-in-out">
@@ -116,7 +112,7 @@ function FinishCart({ data, ...props }: FinishCartProps) {
           {step === 2 && (
             <>
               <div className="w-full">
-                {data.map((item: CartItemProps) => {
+                {cart.data.map((item: CartItemProps) => {
                   return (
                     <div key={item.id}>
                       <div className="flex w-full items-center justify-between">
@@ -127,8 +123,8 @@ function FinishCart({ data, ...props }: FinishCartProps) {
                         <span className="font-bold">
                           {item.discount
                             ? (
-                                item.price -
-                                item.discount * item.price * item.quantity
+                                item.quantity *
+                                (item.price - item.discount * item.price)
                               ).toLocaleString("pt-br", {
                                 style: "currency",
                                 currency: "BRL",

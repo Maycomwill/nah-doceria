@@ -132,9 +132,10 @@ export function CartContextProvider({
                 ...item,
                 quantity,
                 value:
+                  quantity *
                   (item.discount
                     ? item.price - item.price * item.discount
-                    : item.price) * quantity,
+                    : item.price),
               }
             : i,
         ),
