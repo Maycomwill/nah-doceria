@@ -55,16 +55,18 @@ const doces = [
     price: 0.55,
     available: true,
     category: "doces",
+    new_product: true,
   },
   {
     id: "6",
     name: "Bem-Casado",
-    description: "Brigadeiro de chocolate com brigadeiro branco",
+    // description: "Brigadeiro de chocolate com brigadeiro branco",
     picture: BemCasado,
     price: 0.6,
     discount: 0.1,
     available: true,
     category: "doces",
+    new_product: true,
   },
 ];
 

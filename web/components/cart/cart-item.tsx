@@ -19,7 +19,7 @@ function CartItem({ data, ...props }: CartItemInterface) {
         <RemoveItemFromCart item={data} />
         <ChangeItemQuantity item={data} />
         {discount && (
-          <div className="absolute -bottom-1 -left-4 rounded-xl bg-red-500 py-1 shadow-md">
+          <div className="absolute -bottom-1 -left-4 rounded-lg bg-red-500 px-1 py-1 shadow-md">
             <span className="text-xs font-bold text-slate-50">
               -{discount * 100}%
             </span>
