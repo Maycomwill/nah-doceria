@@ -5,7 +5,7 @@ export interface Address {
   complement: string;
   neighborhood: string;
   zipCode: string;
-  isDefault: boolean;
+  // isDefault: boolean;
   buyer: string;
 }
 export interface AddressWithoutId {
@@ -14,6 +14,6 @@ export interface AddressWithoutId {
   complement: string;
   neighborhood: string;
   zipCode: string;
-  isDefault: boolean;
+  // isDefault: boolean;
   buyer: string;
 }
