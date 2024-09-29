@@ -19,9 +19,7 @@ function AddressForm({
 }) {
   const { addAddress, addresses } = useAddresses();
   const [defaultAddress, setDefaultAddress] = useState(
-    addresses.length !== 0
-      ? addresses.filter((a) => a.isDefault)[0]
-      : undefined,
+    addresses.length !== 0 ? addresses[0] : undefined,
   );
   const [address, setAddress] = useState(
     defaultAddress !== undefined ? defaultAddress.address : "",
@@ -41,9 +39,9 @@ function AddressForm({
   const [buyer, setBuyer] = useState(
     defaultAddress !== undefined ? defaultAddress.buyer : "",
   );
-  const [isDefault, setIsDefault] = useState(
-    defaultAddress?.isDefault || false,
-  );
+  // const [isDefault, setIsDefault] = useState(
+  //   defaultAddress?.isDefault || false,
+  // );
   const [delivery, setDelivery] = useState(true);
   const { handleDeliveryOption, handleSelectAddress } = useCart();
 
@@ -66,7 +64,7 @@ function AddressForm({
           zipCode,
           complement,
           buyer,
-          isDefault,
+          // isDefault,
         }),
         handleSelectAddress({
           id: newId,
@@ -76,16 +74,16 @@ function AddressForm({
           zipCode,
           complement,
           buyer,
-          isDefault,
+          // isDefault,
         }));
     }
     setStep(2);
   }
 
-  function handleCheckedChange() {
-    setIsDefault(!isDefault);
-    return;
-  }
+  // function handleCheckedChange() {
+  //   setIsDefault(!isDefault);
+  //   return;
+  // }
 
   function handleDelivery() {
     setDelivery(!delivery);
@@ -101,7 +99,7 @@ function AddressForm({
       setZipcode(defaultAddress.zipCode);
       setComplement(defaultAddress.complement || "");
       setBuyer(defaultAddress.buyer);
-      setIsDefault(defaultAddress.isDefault);
+      // setIsDefault(defaultAddress.isDefault);
     }
   }, [defaultAddress]);
 
@@ -174,15 +172,17 @@ function AddressForm({
               onChange={(e) => setZipcode(e.target.value)}
             />
           </div>
-          <div className="flex items-center space-x-2">
+
+          {/* Checkbox para definir o endereço como padrão
+           <div className="flex items-center space-x-2">
             <Checkbox
               checked={isDefault}
               onCheckedChange={handleCheckedChange}
               id="isDefault"
             />
             <label htmlFor="isDefault">Endereço padrão</label>
-          </div>
-          <div>
+          </div> */}
+          <div className="pt-2">
             <Select onValueChange={(value) => handleAddressSelect(value)}>
               <SelectTrigger>
                 <SelectValue placeholder="Selecione um endereço cadastrado" />
@@ -207,13 +207,19 @@ function AddressForm({
         />
         <label htmlFor="delivery">Delivery</label>
       </div>
-      {!delivery && (
+      {!delivery ? (
         <div className="flex flex-col">
           <span className="text-xs">
             Você irá fazer a retirada dos produtos!
           </span>
           <span className="text-xs">
             O endereço será fornecido no final da compra.
+          </span>
+        </div>
+      ) : (
+        <div>
+          <span className="text-[0.6rem]">
+            O valor do frete pode variar de acordo com o endereço de entrega
           </span>
         </div>
       )}
