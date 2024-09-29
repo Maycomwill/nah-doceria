@@ -98,6 +98,79 @@ function BuyDialog({ data, ...props }: BuyDialogProps) {
                   max={100}
                 />
               </div>
+              {data.name == "Copinho" && (
+                <div className="flex flex-col items-start justify-center space-y-4">
+                  <div>
+                    <select
+                      className="rounded-md border-none bg-transparent p-2 outline-none ring-1 ring-primary-400 focus-visible:ring-primary-500"
+                      id="base"
+                      value={base}
+                      onChange={(e) => setBase(e.target.value)}
+                      required
+                    >
+                      <option value="" disabled>
+                        Selecione a casquinha
+                      </option>
+                      <option value="chocolate_ao_leite">
+                        Chocolate ao leite
+                      </option>
+                      <option value="branca">Chocolate branco</option>
+                      <option value="chocolate_meio_amargo">
+                        Chocolate meio amargo
+                      </option>
+                    </select>
+                  </div>
+                  <div>
+                    <select
+                      className="rounded-md border-none bg-transparent p-2 outline-none ring-1 ring-primary-400 focus-visible:ring-primary-500"
+                      id="filling"
+                      value={filling}
+                      onChange={(e) => setFilling(e.target.value)}
+                      required
+                    >
+                      <option value="" disabled>
+                        Selecione o recheio
+                      </option>
+                      <option value="chocolate">Mousse de Chocolate</option>
+                      <option value="chocolate-branco">
+                        Mousse de Brigadeiro
+                      </option>
+                      <option value="ninho">Mousse de Ninho</option>
+                      <option value="morango">Mousse de Morango</option>
+                      <option value="bem-casado">Mousse de Creme</option>
+                      <option value="maracuja">Mousse de Maracujá</option>
+                      <option value="doce-de-leite">
+                        Mousse de Doce de Leite
+                      </option>
+                      <option value="limao">Mousse de Limão</option>
+                      <option value="prestigio">Mousse de Prestígio</option>
+                      <option value="pacoca">Mousse de Paçoca</option>
+                    </select>
+                  </div>
+                  <div>
+                    <select
+                      className="rounded-md border-none bg-transparent p-2 outline-none ring-1 ring-primary-400 focus-visible:ring-primary-500"
+                      id="topping"
+                      value={topping}
+                      onChange={(e) => setTopping(e.target.value)}
+                      required
+                    >
+                      <option value="" disabled>
+                        Selecione a cobertura
+                      </option>
+                      <option value={undefined}>Nenhuma</option>
+                      <option value="chocolate">Calda de Chocolate</option>
+                      <option value="maracuja">Geléia de Maracujá</option>
+                      <option value="limao">Geléia de Limão</option>
+                      <option value="morango">Geléia de Morango</option>
+                      <option value="coco">Coco ralado</option>
+                      <option value="pacoca">Farora de Paçoca</option>
+                      <option value="uva_verde">Uva verde</option>
+                      <option value="uva_roxa">Uva roxa</option>
+                    </select>
+                  </div>
+                </div>
+              )}
               {data.category === "trufas" && (
                 <div className="flex flex-col items-start justify-center space-y-4">
                   <div>
