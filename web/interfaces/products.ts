@@ -9,6 +9,7 @@ export interface MenuItemProps {
   discount?: number;
   available: boolean;
   category: string;
+  new_product?: boolean;
 }
 
 export interface CartItemProps {
@@ -23,4 +24,5 @@ export interface CartItemProps {
   description?: string;
   discount?: number;
   value: number;
+  new_product?: boolean;
 }

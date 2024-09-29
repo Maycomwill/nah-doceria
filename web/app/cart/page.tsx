@@ -9,7 +9,7 @@ import React, { useEffect } from "react";
 
 function Cart() {
   const { cart, isLoading } = useCart();
-  const [subtotal, setSubtotal] = React.useState<number | undefined>(undefined);
+  const [subtotal, setSubtotal] = React.useState<number>(0);
   useEffect(() => {
     handleSubtotal(cart.data);
   }, [cart]);
@@ -37,17 +37,15 @@ function Cart() {
         <h2 className="font-title text-4xl font-bold leading-6 tracking-wider">
           Subtotal
         </h2>
-        {subtotal !== undefined ? (
-          <span className="font-title text-xl font-bold leading-6 text-primary-500">
-            {subtotal.toLocaleString("pt-br", {
-              style: "currency",
-              currency: "BRL",
-            })}
-          </span>
-        ) : (
-          <Loading />
-        )}
-        <FinishCart data={cart.data} />
+
+        <span className="font-title text-xl font-bold leading-6 text-primary-500">
+          {subtotal.toLocaleString("pt-br", {
+            style: "currency",
+            currency: "BRL",
+          })}
+        </span>
+
+        <FinishCart />
         <ClearCart />
       </div>
     </div>

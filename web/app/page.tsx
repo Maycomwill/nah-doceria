@@ -4,6 +4,7 @@ import { data } from "@/lib/fakeData";
 import { InstagramLogoIcon } from "@radix-ui/react-icons";
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 import Link from "next/link";
+import clsx from "clsx";
 function Home() {
   return (
     <div className="flex h-full w-full flex-col items-center justify-center space-y-12">
@@ -37,9 +38,15 @@ function Home() {
             <h2 className="text-center font-title text-4xl font-bold uppercase tracking-wider md:text-left">
               Doces
             </h2>
-            <div className="grid w-full grid-cols-2 place-content-start place-items-center items-baseline gap-4 md:grid-cols-3 md:gap-0 lg:grid-cols-4">
-              {data.doces.map((item) => {
-                return <MenuItem data={item} key={item.name} />;
+            <div className="grid w-full grid-cols-2 place-content-start place-items-center items-start gap-4 md:grid-cols-3 md:gap-0 lg:grid-cols-4">
+              {data.doces.map((item, index) => {
+                return (
+                  <MenuItem
+                    className={`${index === data.doces.length - 1 && data.doces.length % 2 !== 0 ? "col-span-2 md:col-span-1 lg:col-span-1" : "col-span-1"}`}
+                    data={item}
+                    key={item.name}
+                  />
+                );
               })}
             </div>
           </div>
@@ -48,8 +55,14 @@ function Home() {
               Trufas
             </h2>
             <div className="grid w-full grid-cols-2 place-content-start place-items-center items-baseline gap-4 md:grid-cols-3 md:gap-0 lg:grid-cols-4">
-              {data.trufas.map((item) => {
-                return <MenuItem data={item} key={item.name} />;
+              {data.trufas.map((item, index) => {
+                return (
+                  <MenuItem
+                    className={`${index === data.trufas.length - 1 && data.trufas.length % 2 !== 0 ? "col-span-2 md:col-span-1 lg:col-span-1" : "col-span-1"}`}
+                    data={item}
+                    key={item.name}
+                  />
+                );
               })}
             </div>
           </div>
@@ -58,8 +71,14 @@ function Home() {
               Brownies
             </h2>
             <div className="grid w-full grid-cols-2 place-content-start place-items-center items-baseline gap-4 md:grid-cols-3 md:gap-0 lg:grid-cols-4">
-              {data.brownies.map((item) => {
-                return <MenuItem data={item} key={item.name} />;
+              {data.brownies.map((item, index) => {
+                return (
+                  <MenuItem
+                    className={`${index === data.brownies.length - 1 && data.brownies.length % 2 !== 0 ? "col-span-2 md:col-span-1 lg:col-span-1" : "col-span-1"}`}
+                    data={item}
+                    key={item.name}
+                  />
+                );
               })}
             </div>
           </div>
