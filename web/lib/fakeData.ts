@@ -1,78 +1,93 @@
 import Brigadeiro from "@/assets/doces/brigadeiro.jpg";
 import BrigadeiroRosa from "@/assets/doces/brigadeiro_rosa.png";
-import Beijinho from "@/assets/doces/beijinho.png";
-import BemCasado from "@/assets/doces/bem_casado.png";
+import Beijinho from "@/assets/doces/beijinho.jpg";
+import BemCasado from "@/assets/doces/bem_casado.jpg";
 import OlhoDeSogra from "@/assets/doces/olho_de_sogra.png";
-import SurpresaDeUva from "@/assets/doces/surpresa_de_uva.png";
+import SurpresaDeUva from "@/assets/doces/surpresa_de_uva.jpg";
 import Brownie from "@/assets/doces/brownie.png";
 import BrownieCobertura from "@/assets/doces/brownie_cobertura.png";
 import TrufaP from "@/assets/doces/trufa_p.png";
-import TrufaM from "@/assets/doces/trufa_m.png";
-import TrufaG from "@/assets/doces/trufa_g.png";
+import TrufaM from "@/assets/doces/trufa_m.jpg";
+import TrufaG from "@/assets/doces/trufa_g.jpg";
+import BrigadeiroPacoca from "@/assets/doces/brigadeiro_de_pacoca.png";
+import Copinho from "@/assets/doces/copinho.png";
+import { nanoid } from "nanoid";
 
 const doces = [
   {
-    id: "1",
+    id: nanoid(),
     name: "brigadeiro",
     description: "Brigadeiro de chocolate",
     picture: Brigadeiro,
-    price: 0.6,
-    discount: 0.1,
+    price: 0.75,
     available: true,
     category: "doces",
   },
   {
-    id: "2",
+    id: nanoid(),
     name: "brigadeiro rosa",
     description: "Brigadeiro de morango",
     picture: BrigadeiroRosa,
-    price: 0.6,
+    price: 0.75,
     available: true,
     category: "doces",
   },
   {
-    id: "3",
+    id: nanoid(),
     name: "Beijinho",
     description: "Beijinho de coco",
     picture: Beijinho,
-    price: 0.5,
+    price: 0.75,
     available: true,
     category: "doces",
   },
   {
-    id: "4",
+    id: nanoid(),
     name: "Olho de Sogra",
     description: "Bem-casado com uva passa",
     picture: OlhoDeSogra,
-    price: 0.6,
+    price: 0.75,
     available: true,
     category: "doces",
   },
   {
-    id: "5",
+    id: nanoid(),
     name: "Surpresa de Uva",
     picture: SurpresaDeUva,
-    price: 0.55,
+    price: 0.75,
     available: true,
     category: "doces",
-    new_product: true,
   },
   {
-    id: "6",
+    id: nanoid(),
     name: "Bem-Casado",
     // description: "Brigadeiro de chocolate com brigadeiro branco",
     picture: BemCasado,
-    price: 0.6,
-    discount: 0.1,
+    price: 0.75,
     available: true,
     category: "doces",
-    new_product: true,
+  },
+  {
+    id: nanoid(),
+    name: "Brigadeiro de paçoca",
+    picture: BrigadeiroPacoca,
+    price: 0.75,
+    available: true,
+    category: "doces",
+  },
+  {
+    id: nanoid(),
+    name: "Copinho",
+    picture: Copinho,
+    price: 1.2,
+    available: true,
+    category: "doces",
   },
 ];
 
 const brownies = [
   {
-    id: "7",
+    id: nanoid(),
     name: "Brownie",
     description: "Brownie de chocolate",
     picture: Brownie,
@@ -81,7 +96,7 @@ const brownies = [
     category: "brownies",
   },
   {
-    id: "8",
+    id: nanoid(),
     name: "Brownie com Cobertura",
     description: "Brownie de chocolate com cobertura",
     picture: BrownieCobertura,
@@ -93,7 +108,7 @@ const brownies = [
 
 const trufas = [
   {
-    id: "9",
+    id: nanoid(),
     name: "Mini trufa",
     picture: TrufaP,
     price: 1,
@@ -101,7 +116,7 @@ const trufas = [
     category: "trufas",
   },
   {
-    id: "10",
+    id: nanoid(),
     name: "Trufa média",
     picture: TrufaM,
     price: 3,
@@ -109,7 +124,7 @@ const trufas = [
     category: "trufas",
   },
   {
-    id: "11",
+    id: nanoid(),
     name: "Trufa Grande",
     picture: TrufaG,
     price: 4,
@@ -120,7 +135,7 @@ const trufas = [
 
 const cart = [
   {
-    id: "12",
+    id: nanoid(),
     name: "Mini trufa",
     picture: TrufaP,
     price: 1,
@@ -130,18 +145,17 @@ const cart = [
     filling: "Chocolate",
   },
   {
-    id: "13",
+    id: nanoid(),
     name: "brigadeiro",
     description: "Brigadeiro de chocolate",
     picture: Brigadeiro,
     price: 0.6,
-    discount: 0.1,
     available: true,
     category: "doces",
     quantity: 20,
   },
   {
-    id: "14",
+    id: nanoid(),
     name: "Brownie",
     description: "Brownie de chocolate",
     picture: Brownie,
@@ -152,7 +166,7 @@ const cart = [
     quantity: 10,
   },
   {
-    id: "15",
+    id: nanoid(),
     name: "brigadeiro rosa",
     description: "Brigadeiro de morango",
     picture: BrigadeiroRosa,
@@ -162,7 +176,7 @@ const cart = [
     quantity: 10,
   },
   {
-    id: "16",
+    id: nanoid(),
     name: "Surpresa de Uva",
     picture: SurpresaDeUva,
     price: 0.55,

@@ -48,6 +48,7 @@ export function CartContextProvider({
 
   async function addToCart(item: CartItemProps) {
     setIsLoading(true);
+    console.log(item);
     const newId = nanoid();
     const newItem = { ...item, id: newId };
 
@@ -169,7 +170,7 @@ export function CartContextProvider({
       "Olá, gostaria de fazer o meu pedido com os seguintes itens:\n";
 
     cart.data.forEach((item) => {
-      message += `\n⚪ *${item.name} ${item.filling ? `(${item.filling})` : ""} x${item.quantity} - ${item.value.toLocaleString("pt-br", { style: "currency", currency: "BRL" })}*\n`;
+      message += `\n⚪ *${item.name} ${item.base ? `- Casquinha: (${item.base.split("_").join(" ")})` : ""} ${item.filling ? `- Recheio: (${item.filling})` : ""} ${item.topping ? `- Cobertura: (${item.topping})` : ""} x${item.quantity} - ${item.value.toLocaleString("pt-br", { style: "currency", currency: "BRL" })}*\n`;
     });
 
     if (!cart.delivery.option) {

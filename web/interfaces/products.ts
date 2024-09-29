@@ -21,8 +21,10 @@ export interface CartItemProps {
   category: string;
   quantity: number;
   filling?: string;
+  topping?: string;
   description?: string;
   discount?: number;
   value: number;
   new_product?: boolean;
+  base?: string;
 }

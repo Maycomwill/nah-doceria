@@ -9,7 +9,7 @@ interface CartItemInterface extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 function CartItem({ data, ...props }: CartItemInterface) {
-  const { name, picture, price, discount, category, quantity, filling } = data;
+  const { name, base, topping, price, discount, quantity, filling } = data;
   return (
     <div
       {...props}
@@ -25,22 +25,30 @@ function CartItem({ data, ...props }: CartItemInterface) {
             </span>
           </div>
         )}
-        {quantity && (
-          <div className="absolute -bottom-1 -right-2 py-1">
-            <span className="text-xs font-bold text-slate-950">
-              {quantity}x
-            </span>
-          </div>
-        )}
+
+        <div className="absolute -bottom-1 -right-2 py-1">
+          <span className="text-xs font-bold text-slate-950">{quantity}x</span>
+        </div>
       </div>
       <div className="flex flex-col items-center justify-between space-y-1">
         <span className="text-center text-lg font-medium capitalize">
-          {name}
+          {name.length >= 20 ? `${name.slice(0, 11)}...` : name}
         </span>
+        {base && (
+          <p className="text-center text-sm">
+            Base: {base.split("_").join(" ")}
+          </p>
+        )}
         {filling && (
           <p className="text-center text-sm">
-            {category === "brownies" ? "Cobertura" : "Recheio"}:{" "}
+            Recheio:{" "}
             <span className="capitalize">{filling.split("-").join(" ")}</span>
+          </p>
+        )}
+        {topping && (
+          <p className="text-center text-sm">
+            Cobertura:{" "}
+            <span className="capitalize">{topping.split("-").join(" ")}</span>
           </p>
         )}
         <span className="font-medium">

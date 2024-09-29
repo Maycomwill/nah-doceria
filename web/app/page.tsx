@@ -1,10 +1,8 @@
 import React from "react";
 import MenuItem from "@/components/menu-item";
 import { data } from "@/lib/fakeData";
-import { InstagramLogoIcon } from "@radix-ui/react-icons";
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 import Link from "next/link";
-import clsx from "clsx";
 function Home() {
   return (
     <div className="flex h-full w-full flex-col items-center justify-center space-y-12">

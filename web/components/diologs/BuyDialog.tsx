@@ -23,6 +23,8 @@ function BuyDialog({ data, ...props }: BuyDialogProps) {
   const [quantity, setQuantity] = useState(1);
   const [open, setOpen] = useState(false);
   const [filling, setFilling] = useState("");
+  const [topping, setTopping] = useState("");
+  const [base, setBase] = useState("");
   const { addToCart, isLoading } = useCart();
   const router = useRouter();
   function handleSubmit(e: FormEvent) {
@@ -31,6 +33,8 @@ function BuyDialog({ data, ...props }: BuyDialogProps) {
       ...data,
       quantity,
       filling: filling ? filling : undefined,
+      topping: topping ? topping : undefined,
+      base: base ? base : undefined,
       value:
         quantity *
         (data.discount ? data.price - data.price * data.discount : data.price),
@@ -95,36 +99,58 @@ function BuyDialog({ data, ...props }: BuyDialogProps) {
                 />
               </div>
               {data.category === "trufas" && (
-                <div>
-                  <select
-                    className="rounded-md border-none bg-transparent p-2 outline-none ring-1 ring-primary-400 focus-visible:ring-primary-500"
-                    id="filling"
-                    value={filling}
-                    onChange={(e) => setFilling(e.target.value)}
-                    required
-                  >
-                    <option value="" disabled>
-                      Selecione um sabor
-                    </option>
-                    <option value="chocolate">Chocolate</option>
-                    <option value="chocolate-branco">Chocolate Branco</option>
-                    <option value="ninho">Ninho</option>
-                    <option value="morango">Morango</option>
-                    <option value="bem-casado">Bem-casado</option>
-                    <option value="maracuja">Maracujá</option>
-                    <option value="doce-de-leite">Doce de Leite</option>
-                    <option value="limao">Limão</option>
-                    <option value="prestigio">Prestígio</option>
-                  </select>
+                <div className="flex flex-col items-start justify-center space-y-4">
+                  <div>
+                    <select
+                      className="rounded-md border-none bg-transparent p-2 outline-none ring-1 ring-primary-400 focus-visible:ring-primary-500"
+                      id="base"
+                      value={base}
+                      onChange={(e) => setBase(e.target.value)}
+                      required
+                    >
+                      <option value="" disabled>
+                        Selecione a casquinha
+                      </option>
+                      <option value="chocolate_ao_leite">
+                        Chocolate ao leite
+                      </option>
+                      <option value="branca">Chocolate branco</option>
+                      <option value="chocolate_meio_amargo">
+                        Chocolate meio amargo
+                      </option>
+                    </select>
+                  </div>
+                  <div>
+                    <select
+                      className="rounded-md border-none bg-transparent p-2 outline-none ring-1 ring-primary-400 focus-visible:ring-primary-500"
+                      id="filling"
+                      value={filling}
+                      onChange={(e) => setFilling(e.target.value)}
+                      required
+                    >
+                      <option value="" disabled>
+                        Selecione o recheio
+                      </option>
+                      <option value="chocolate">Chocolate</option>
+                      <option value="chocolate-branco">Chocolate Branco</option>
+                      <option value="ninho">Ninho</option>
+                      <option value="morango">Morango</option>
+                      <option value="bem-casado">Bem-casado</option>
+                      <option value="maracuja">Maracujá</option>
+                      <option value="doce-de-leite">Doce de Leite</option>
+                      <option value="limao">Limão</option>
+                      <option value="prestigio">Prestígio</option>
+                    </select>
+                  </div>
                 </div>
               )}
               {data.name.includes("Cobertura") && (
                 <div>
                   <select
                     className="rounded-md border-none bg-transparent p-2 outline-none ring-1 ring-primary-400 focus-visible:ring-primary-500"
-                    id="filling"
-                    value={filling}
-                    onChange={(e) => setFilling(e.target.value)}
+                    id="topping"
+                    value={topping}
+                    onChange={(e) => setTopping(e.target.value)}
                     required
                   >
                     <option value="" disabled>
